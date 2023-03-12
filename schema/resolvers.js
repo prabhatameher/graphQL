@@ -42,7 +42,29 @@ const resolvers = {
             console.log(user)
             UserList.push(user)
             return user
+        },
+        updateUsername: (parent, args) => {
+            const { id, username } = args.input
+            let userUpdate;
+            UserList.forEach((user) => {
+                if (user.id == Number(id)) {
+                    user.username = username;
+                    userUpdate = user
+                }
+            })
+            console.log(userUpdate)
+            return userUpdate
+        },
+
+        deleteUser: (parent, args) => {
+            const id = args.id
+            console.log(args.id)
+            let users;
+            users = UserList.filter((user) => user.id !== Number(id))
+            // console.log(users)
+            return users
         }
+
     }
 }
 

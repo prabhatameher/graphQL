@@ -42,8 +42,15 @@ const typeDefs = gql`
         release:Int!
     }
 
+    input UpdateUserInput{
+        id:ID!
+        username:String!
+    }
+
     type Mutation{
-        createUser(input:CreateUserInput):User!
+        createUser(input:CreateUserInput):User
+        updateUsername(input:UpdateUserInput):User
+        deleteUser(id:ID!):[User]
     }
     
 `;
