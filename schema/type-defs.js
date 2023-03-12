@@ -26,6 +26,26 @@ const typeDefs = gql`
         getMovie(release:Int!):[Movie!]!
     }
 
+    input CreateUserInput{
+        name:String!
+        username:String!
+        email:String!
+        gender:String!
+        country:String!
+        # favouriteMovie:[Movie]
+        favouriteMovie:CreateMovie
+    }
+
+    input CreateMovie{
+        movie:String!
+        genre:String!
+        release:Int!
+    }
+
+    type Mutation{
+        createUser(input:CreateUserInput):User!
+    }
+    
 `;
 
 module.exports = { typeDefs }

@@ -32,6 +32,17 @@ const resolvers = {
             let movies = MovieList.filter(mov => mov.release <= 2000)
             return movies
         }
+    },
+
+    Mutation: {
+        createUser: (parent, args) => {
+            const user = args.input
+            const lastId = UserList[UserList.length - 1].id;
+            user.id = lastId + 1;
+            console.log(user)
+            UserList.push(user)
+            return user
+        }
     }
 }
 
